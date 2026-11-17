@@ -1,0 +1,25 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1b2533;
+  background: #f7f9fc;
+}
+
+body {
+  margin: 0;
+}
+
+header, main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+a {
+  color: #1757a6;
+}
