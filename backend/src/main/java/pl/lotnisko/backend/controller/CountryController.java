@@ -25,8 +25,8 @@ public class CountryController {
     }
 
     @PostMapping
-    public Country addCountry(@RequestBody Country country){
-        return countryRepository.save(country);
+    public Country addCountry(@RequestBody Country request){
+        return countryRepository.save(request);
     }
 
 

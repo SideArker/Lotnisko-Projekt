@@ -27,8 +27,8 @@ public class TerminalController {
 
 
     @PostMapping
-    public Terminal addTerminal(@RequestBody Terminal terminal){
-       return terminalRepository.save(terminal);
+    public Terminal addTerminal(@RequestBody Terminal request){
+       return terminalRepository.save(request);
     }
 
 

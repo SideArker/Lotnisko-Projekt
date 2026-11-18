@@ -23,8 +23,8 @@ public class CertificateController {
     }
 
     @PostMapping
-    public Certificate addCertificate(@RequestBody Certificate certificate){
-        return certificateRepository.save(certificate);
+    public Certificate addCertificate(@RequestBody Certificate request){
+        return certificateRepository.save(request);
     }
 
 }
