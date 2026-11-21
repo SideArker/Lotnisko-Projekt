@@ -1,6 +1,10 @@
 package pl.lotnisko.backend.controller;
 
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.lotnisko.backend.dto.CreateTicketRequest;
 import pl.lotnisko.backend.model.Ticket;
 import pl.lotnisko.backend.repository.TicketRepository;
 
@@ -23,8 +27,8 @@ public class TicketController {
     }
 
     @PostMapping
-    public Ticket addTicket(@RequestBody Ticket request){
-        return ticketRepository.save(request);
+    public ResponseEntity<Void> createTicket  (@Valid @RequestBody CreateTicketRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 
