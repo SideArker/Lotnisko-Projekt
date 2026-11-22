@@ -3,6 +3,7 @@ package pl.lotnisko.backend.service;
 
 import org.springframework.stereotype.Service;
 import pl.lotnisko.backend.dto.CreateTicketRequest;
+import pl.lotnisko.backend.dto.TicketResponse;
 import pl.lotnisko.backend.exception.ConflictException;
 import pl.lotnisko.backend.exception.ResourceNotFoundException;
 import pl.lotnisko.backend.model.Flight;
@@ -29,7 +30,33 @@ public class TicketService {
         this.passengerRepository = passengerRepository;
     }
 
-    public Ticket createTicket(CreateTicketRequest request){
+    private TicketResponse toResponse(Ticket ticket) {
+
+        TicketResponse response = new TicketResponse();
+        response.setTicketId(ticket.getTicketId());
+        response.setFlightId(ticket.getFlight().getFlightId());
+        response.setPassengerId(ticket.getPassenger().getPassengerId());
+        response.setPassengerFirstName(ticket.getPassenger().getFirstName());
+        response.setPassengerLastName(ticket.getPassenger().getLastName());
+        response.setSeatNumber(ticket.getSeatNumber());
+        response.setTravelClass(ticket.getTravelClass());
+        response.setStatus(ticket.getStatus());
+
+        return response;
+
+
+    }
+
+    public TicketResponse getTicket(Integer ticketId){
+        Ticket ticket = ticketRepository.findById(ticketId)
+                .orElseThrow(() -> new ResourceNotFoundException("Ticket not found"));
+
+        TicketResponse ticketResponse = toResponse(ticket);
+        return ticketResponse;
+    }
+
+
+    public Ticket createTicket(CreateTicketRequest request) {
         Flight flight = flightRepository.findById(request.getFlightId())
                 .orElseThrow(() -> new ResourceNotFoundException("Flight not found"));
 
@@ -37,8 +64,7 @@ public class TicketService {
                 .orElseThrow(() -> new ResourceNotFoundException("Passenger not found"));
 
 
-        if ( ticketRepository.existsByFlight_FlightIdAndSeatNumber(request.getFlightId(),request.getSeatNumber()))
-        {
+        if (ticketRepository.existsByFlight_FlightIdAndSeatNumber(request.getFlightId(), request.getSeatNumber())) {
             throw new ConflictException("Seat is already taken");
         }
 
