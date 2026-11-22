@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.lotnisko.backend.dto.CreateTicketRequest;
+import pl.lotnisko.backend.dto.TicketResponse;
 import pl.lotnisko.backend.model.Ticket;
 import pl.lotnisko.backend.repository.TicketRepository;
 import pl.lotnisko.backend.service.TicketService;
@@ -20,6 +21,13 @@ public class TicketController {
 
     public TicketController(TicketService ticketService) {
         this.ticketService = ticketService;
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TicketResponse> getTicket(@PathVariable Integer id){
+        TicketResponse response = ticketService.getTicket(id);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 
