@@ -2,9 +2,9 @@ package pl.lotnisko.backend.model;
 
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
+
 
 @Entity
 @Table(name = "flights")
@@ -32,10 +32,10 @@ public class Flight {
     @JoinColumn(name = "destination_airport_id")
     private Airport destinationAirport;
 
-    private LocalDateTime departureTime;
-    private LocalDateTime arrivalTime;
-    private LocalDateTime actualDepartureTime;
-    private LocalDateTime actualArrivalTime;
+    private Instant departureTime;
+    private Instant arrivalTime;
+    private Instant actualDepartureTime;
+    private Instant actualArrivalTime;
     private String status;
 
     @ManyToOne
@@ -87,35 +87,35 @@ public class Flight {
         this.destinationAirport = destinationAirport;
     }
 
-    public LocalDateTime getDepartureTime() {
+    public Instant getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(LocalDateTime departureTime) {
+    public void setDepartureTime(Instant departureTime) {
         this.departureTime = departureTime;
     }
 
-    public LocalDateTime getArrivalTime() {
+    public Instant getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(LocalDateTime arrivalTime) {
+    public void setArrivalTime(Instant arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
-    public LocalDateTime getActualDepartureTime() {
+    public Instant getActualDepartureTime() {
         return actualDepartureTime;
     }
 
-    public void setActualDepartureTime(LocalDateTime actualDepartureTime) {
+    public void setActualDepartureTime(Instant actualDepartureTime) {
         this.actualDepartureTime = actualDepartureTime;
     }
 
-    public LocalDateTime getActualArrivalTime() {
+    public Instant getActualArrivalTime() {
         return actualArrivalTime;
     }
 
-    public void setActualArrivalTime(LocalDateTime actualArrivalTime) {
+    public void setActualArrivalTime(Instant actualArrivalTime) {
         this.actualArrivalTime = actualArrivalTime;
     }
 

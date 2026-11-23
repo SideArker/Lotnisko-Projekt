@@ -4,7 +4,7 @@ package pl.lotnisko.backend.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -29,7 +29,7 @@ public class Ticket {
     private String seatNumber;
     private String travelClass;
     private BigDecimal price;
-    private LocalDateTime purchaseDate;
+    private Instant purchaseDate;
     private String status;
 
 
@@ -84,11 +84,11 @@ public class Ticket {
         this.price = price;
     }
 
-    public LocalDateTime getPurchaseDate() {
+    public Instant getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
+    public void setPurchaseDate(Instant purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
