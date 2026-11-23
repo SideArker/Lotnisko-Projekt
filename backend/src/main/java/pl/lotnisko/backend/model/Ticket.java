@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tickets")
@@ -12,8 +13,8 @@ public class Ticket {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ticketId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID ticketId;
 
 
     @ManyToOne
@@ -35,11 +36,11 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Integer getTicketId() {
+    public UUID getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Integer ticketId) {
+    public void setTicketId(UUID ticketId) {
         this.ticketId = ticketId;
     }
 
