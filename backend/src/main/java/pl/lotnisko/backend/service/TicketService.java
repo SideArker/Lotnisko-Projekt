@@ -15,6 +15,7 @@ import pl.lotnisko.backend.repository.TicketRepository;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.UUID;
 
 @Service
 public class TicketService {
@@ -47,7 +48,7 @@ public class TicketService {
 
     }
 
-    public TicketResponse getTicket(Integer ticketId){
+    public TicketResponse getTicket(UUID ticketId){
         Ticket ticket = ticketRepository.findById(ticketId)
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found"));
 

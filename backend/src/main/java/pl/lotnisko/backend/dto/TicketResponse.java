@@ -1,8 +1,10 @@
 package pl.lotnisko.backend.dto;
 
+import java.util.UUID;
+
 public class TicketResponse {
 
-    private Integer ticketId;
+    private UUID ticketId;
     private Integer flightId;
     private Integer passengerId;
     private String passengerFirstName;
@@ -12,11 +14,11 @@ public class TicketResponse {
     private String status;
 
 
-    public Integer getTicketId() {
+    public UUID getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Integer ticketId) {
+    public void setTicketId(UUID ticketId) {
         this.ticketId = ticketId;
     }
 
