@@ -8,9 +8,14 @@
     "build": "npm run type-check && npm run build-only",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "mockups:export": "node scripts/export-mockups.mjs",
+    "mockups:check": "node scripts/check-mockups.mjs"
   },
   "dependencies": {
+    "@mantine/core": "^9.8.2",
+    "@mantine/hooks": "^9.8.2",
+    "lucide-react": "^1.81.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.0"
